@@ -1,0 +1,24 @@
+<!-- @dsCard group="Components" viewport="700x260" name="Card" subtitle="Bordered surface + soft shadow; featured = accent border" -->
+<!DOCTYPE html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css">
+<style>
+  body{margin:0;font-family:var(--font-body);background:var(--surface-page);padding:22px;display:flex;gap:18px;align-items:flex-start}
+  .card{background:var(--surface-card);border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:var(--card-pad);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:var(--space-3);width:280px;position:relative}
+  .card.featured{border-color:var(--accent);box-shadow:var(--shadow-lg)}
+  .kicker{font-size:var(--text-caption);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--fg-2);font-weight:var(--fw-semibold)}
+  .num{font-family:var(--font-display);font-size:var(--text-sm);color:var(--accent);font-weight:var(--fw-semibold)}
+  h3{margin:0;font-size:var(--text-h4);font-weight:var(--fw-semibold);color:var(--fg-1)}
+  p{margin:0;font-size:var(--text-sm);line-height:var(--lh-body);color:var(--fg-2)}
+  .tag{position:absolute;top:-12px;right:22px;font-size:var(--text-caption);font-weight:var(--fw-semibold);color:#fff;background:var(--accent);padding:4px 10px;border-radius:var(--radius-pill)}
+</style></head><body>
+  <div class="card">
+    <span class="num">01</span>
+    <h3>Your RSUs vested — now what?</h3>
+    <p>Too much of your net worth in one stock costs you sleep. I'll set a disciplined selling cadence.</p>
+  </div>
+  <div class="card featured">
+    <span class="tag">Most popular</span>
+    <span class="kicker">Annual Advisory</span>
+    <h3 style="font-family:var(--font-display);font-size:var(--text-price)">$899</h3>
+    <p>Unlimited questions all year · quarterly reviews · proactive tax-season reminders.</p>
+  </div>
+</body></html>

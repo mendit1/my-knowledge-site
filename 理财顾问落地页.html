@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jess · Financial Planning</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+  body{margin:0;background:var(--surface-page);color:var(--fg-1);font-family:var(--font-body)}
+  a{color:var(--accent)}a:hover{color:var(--accent-strong)}
+  .page *{box-sizing:border-box}
+  .serif{font-family:var(--font-display)}
+  .zh{display:block;color:var(--fg-2);font-size:.86em;margin-top:8px}
+  .sec{padding:0 var(--gutter)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:var(--space-5) var(--gutter);border-bottom:1px solid var(--border-1)}
+  .brand{display:flex;align-items:center;gap:var(--space-3);font-weight:var(--fw-semibold);font-size:15px}
+  .mark{width:30px;height:30px;border-radius:var(--radius-sm);background:var(--accent);color:var(--fg-on-accent);display:grid;place-items:center;font-family:var(--font-display);font-size:16px;font-weight:var(--fw-semibold)}
+  .navlinks{display:flex;gap:var(--space-6);font-size:var(--text-sm);color:var(--fg-2)}
+  .navlinks a{text-decoration:none}.navlinks a:hover{color:var(--accent)}
+  @media(max-width:640px){.navlinks{display:none}}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-2);font-family:var(--font-body);font-size:var(--text-sm);font-weight:var(--fw-medium);padding:11px 20px;border-radius:var(--radius-md);border:1px solid transparent;cursor:pointer;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+  .btn-primary{background:var(--accent);color:var(--fg-on-accent)}
+  .btn-primary:hover{background:var(--accent-strong)}
+  .btn-outline{border-color:var(--accent);color:var(--accent);background:transparent}
+  .btn-outline:hover{background:var(--accent-soft)}
+  .btn-ghost{color:var(--fg-2);background:transparent}.btn-ghost:hover{color:var(--fg-1)}
+  .btn-on-accent{background:var(--fg-on-accent);color:var(--accent)}
+  .btn-block{width:100%}
+  .kicker{display:inline-flex;align-items:center;gap:8px;font-size:var(--text-caption);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--accent);font-weight:var(--fw-semibold)}
+  .eyebrow{font-size:var(--text-caption);letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--fg-2);font-weight:var(--fw-semibold)}
+  .h1{font-size:var(--text-h1);line-height:var(--lh-tight);font-weight:var(--fw-semibold);letter-spacing:var(--tracking-tight);margin:0}
+  .lead{font-size:var(--text-lead);line-height:var(--lh-body);color:var(--fg-2);max-width:46ch}
+  .h2{font-size:var(--text-h2);line-height:var(--lh-heading);font-weight:var(--fw-semibold);letter-spacing:var(--tracking-tight);margin:0}
+  .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--space-12);padding:var(--section-y) var(--gutter);align-items:center}
+  .hero-copy{display:flex;flex-direction:column;gap:var(--space-6)}
+  .trust{display:flex;gap:var(--space-6);flex-wrap:wrap;font-size:var(--text-caption);color:var(--fg-2);margin-top:var(--space-1)}
+  .frame{border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--border-1);box-shadow:var(--shadow-md)}
+  .frame img{display:block;width:100%;height:100%;object-fit:cover}
+  .band-tint{background:var(--accent-soft)}
+  .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+  .card{background:var(--surface-card);border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:var(--card-pad);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;gap:var(--space-3)}
+  .pnum{font-family:var(--font-display);font-size:var(--text-sm);color:var(--accent);font-weight:var(--fw-semibold)}
+  .ctitle{font-weight:var(--fw-semibold);font-size:var(--text-h4);line-height:1.35}
+  .cbody{margin:0;font-size:var(--text-sm);line-height:var(--lh-body);color:var(--fg-2)}
+  .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--space-11);padding:var(--section-y) var(--gutter);align-items:center}
+  .about-stats{display:flex;gap:var(--space-8);margin-top:var(--space-2)}
+  .about-stats b{font-family:var(--font-display);font-size:var(--text-stat);font-weight:var(--fw-semibold);color:var(--accent);display:block}
+  .about-stats span{font-size:var(--text-caption);color:var(--fg-2)}
+  .pricing{padding:var(--band-y) var(--gutter);border-top:1px solid var(--border-1)}
+  .price-head{display:flex;flex-direction:column;align-items:center;text-align:center;gap:var(--space-2);margin-bottom:var(--space-8)}
+  .tiers{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-5);max-width:760px;margin:0 auto}
+  .tier{position:relative}
+  .tier-featured{border-color:var(--accent);box-shadow:var(--shadow-lg)}
+  .tag{position:absolute;top:-12px;right:22px;font-size:var(--text-caption);font-weight:var(--fw-semibold);color:var(--fg-on-accent);background:var(--accent);padding:4px 10px;border-radius:var(--radius-pill)}
+  .price{display:flex;align-items:baseline;gap:4px}
+  .price b{font-family:var(--font-display);font-size:var(--text-price);font-weight:var(--fw-semibold)}
+  .price small{color:var(--fg-2);font-size:13px}
+  .feat{display:flex;flex-direction:column;gap:var(--space-3);font-size:var(--text-sm);line-height:1.5}
+  .feat div{display:flex;gap:9px}.chk{color:var(--accent);flex:none}
+  .booking{padding:var(--band-y) var(--gutter);background:var(--accent);color:var(--fg-on-accent);display:grid;grid-template-columns:1.3fr .7fr;gap:var(--space-11);align-items:center}
+  .booking .h2{color:var(--fg-on-accent)}
+  .booking .b-lead{margin:0;font-size:var(--text-body);line-height:var(--lh-body);color:color-mix(in srgb,var(--fg-on-accent) 82%,transparent);max-width:42ch}
+  .qr{width:150px;height:150px;border-radius:var(--radius-lg);display:grid;place-items:center;text-align:center;font:11px/1.5 ui-monospace,monospace;color:color-mix(in srgb,var(--fg-on-accent) 85%,transparent);background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--fg-on-accent) 14%,transparent) 0 10px,color-mix(in srgb,var(--fg-on-accent) 6%,transparent) 10px 20px)}
+  .foot{padding:var(--space-6) var(--gutter);border-top:1px solid var(--border-1);display:flex;justify-content:space-between;gap:var(--space-4);flex-wrap:wrap;color:var(--fg-2);font-size:var(--text-caption)}
+  @media(max-width:820px){.hero,.about,.booking{grid-template-columns:1fr}.cards3{grid-template-columns:1fr}.tiers{grid-template-columns:1fr}.about .frame{order:-1}}
+</style>
+</head>
+<body>
+
+<div class="page" data-accent="navy">
+  <nav class="nav">
+    <div class="brand"><span class="mark">J</span> Jess <span style="color:var(--fg-2);font-weight:var(--fw-regular)">· Financial Planning</span></div>
+    <div class="navlinks"><a href="#services">Services</a><a href="#about">About</a><a href="#pricing">Pricing</a><a href="#book">Book</a></div>
+    <a href="#book" class="btn btn-outline">Book a call</a>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="kicker">For NJ-area engineers · 华人工程师</span>
+      <h1 class="h1 serif">Your equity, decoded.<br>A retirement plan you understand.</h1>
+      <p class="lead">I'm Jess — a former engineer, now an independent advisor helping engineers turn RSU, 401(k), ISO and 529 into one clear plan. No products to sell, just your options made clear.
+        <span class="zh">前工程师，现任独立理财顾问，专帮工程师把 RSU、401(k)、ISO、529 理成一份看得懂的计划——不推销，只讲清楚。</span></p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap">
+        <a href="#book" class="btn btn-primary">Book a free intro call</a>
+        <a href="#book" class="btn btn-ghost">WeChat →</a>
+      </div>
+      <div class="trust"><span>✓ Independent, no product sales</span><span>✓ Bilingual EN / 中文</span><span>✓ Fluent in engineer comp</span></div>
+    </div>
+    <div class="frame" style="aspect-ratio:4/5"><img src="uploads/about.jpg" alt="Jess"></div>
+  </section>
+
+  <section class="sec band-tint" style="padding-top:var(--band-y);padding-bottom:var(--band-y)" id="services">
+    <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:var(--space-8)">
+      <span class="eyebrow">What I help with · 我能解决的三个问题</span>
+      <h2 class="h2 serif" style="max-width:26ch">You're earning well — but these never get the time they need.</h2>
+    </div>
+    <div class="cards3">
+      <div class="card"><span class="pnum">01</span><div class="ctitle">Your RSUs vested — now what?</div><div class="eyebrow" style="color:var(--fg-2)">集中持仓风险</div><p class="cbody">Too much of your net worth in one stock costs you sleep. I set a disciplined selling and reinvestment cadence.</p></div>
+      <div class="card"><span class="pnum">02</span><div class="ctitle">Tax savings left on the table</div><div class="eyebrow" style="color:var(--fg-2)">该省的税每年在漏</div><p class="cbody">Mega Backdoor Roth, HSA, 529 — the tax you can legally save each year is likely more than you think.</p></div>
+      <div class="card"><span class="pnum">03</span><div class="ctitle">ISO / AMT surprise bills</div><div class="eyebrow" style="color:var(--fg-2)">一不小心就多交税</div><p class="cbody">Exercise timing, AMT, double taxation — we run the numbers ahead of time, not at filing season.</p></div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="frame" style="aspect-ratio:1/1"><img src="uploads/about.jpg" alt="Jess"></div>
+    <div style="display:flex;flex-direction:column;gap:var(--space-5)">
+      <span class="eyebrow">About · 关于我</span>
+      <h2 class="h2 serif">I've written the code and hit the RSU and AMT traps myself.</h2>
+      <p style="margin:0;font-size:var(--text-body);line-height:var(--lh-body);color:var(--fg-2)">Jess — a former engineer turned financial planner. I've lived the anxiety of a concentrated position and one surprise AMT bill, so I skip the lectures and just lay the numbers out and make your choices clear.
+        <span class="zh">前工程师转做理财规划。踩过集中持仓和 AMT 的坑，所以不讲大道理，只帮你把数字摊开、把选择讲清楚。</span></p>
+      <div class="about-stats">
+        <div><b>CFP®</b><span>Certified planner*</span></div>
+        <div><b>8+ yrs</b><span>Engineering background*</span></div>
+        <div><b>NJ</b><span>In person, local*</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="price-head">
+      <span class="eyebrow">Pricing · 服务与定价</span>
+      <h2 class="h2 serif">Two ways to work together — start with one session.</h2>
+    </div>
+    <div class="tiers">
+      <div class="card tier">
+        <div style="font-weight:var(--fw-semibold);font-size:16px">Single Session · 单次咨询</div>
+        <div class="price"><b>$299</b><small>/ 90 min</small></div>
+        <div class="feat">
+          <div><span class="chk">✓</span>1:1 review of your RSU / 401(k) / tax picture</div>
+          <div><span class="chk">✓</span>An actionable to-do list</div>
+          <div><span class="chk">✓</span>7 days of follow-up email Q&amp;A</div>
+        </div>
+        <a href="#book" class="btn btn-outline btn-block" style="margin-top:auto">Book a session</a>
+      </div>
+      <div class="card tier tier-featured">
+        <span class="tag">Most popular</span>
+        <div style="font-weight:var(--fw-semibold);font-size:16px">Annual Advisory · 全年顾问</div>
+        <div class="price"><b>$899</b><small>/ year</small></div>
+        <div class="feat">
+          <div><span class="chk">✓</span>Unlimited questions all year</div>
+          <div><span class="chk">✓</span>Quarterly reviews + rebalancing</div>
+          <div><span class="chk">✓</span>Proactive vesting / tax-season reminders</div>
+        </div>
+        <a href="#book" class="btn btn-primary btn-block" style="margin-top:auto">Become an annual client</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking" id="book">
+    <div style="display:flex;flex-direction:column;gap:var(--space-4)">
+      <span class="eyebrow" style="color:color-mix(in srgb,var(--fg-on-accent) 75%,transparent)">Book · 预约</span>
+      <h2 class="h2 serif">Let's talk for 20 minutes.</h2>
+      <p class="b-lead">A free intro call, no pitch. Tell me where you stand and I'll point you at the one or two things worth doing first.
+        <span class="zh" style="color:color-mix(in srgb,var(--fg-on-accent) 70%,transparent)">免费初谈，不推销。你说说现状，我告诉你最该先动手的一两件事。</span></p>
+      <div style="display:flex;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-2)">
+        <a href="#book" class="btn btn-on-accent">Pick a time on Calendly →</a>
+        <a href="#book" class="btn" style="border-color:color-mix(in srgb,var(--fg-on-accent) 50%,transparent);color:var(--fg-on-accent)">Message on WeChat</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+      <div class="qr">WeChat QR<br>微信二维码<br>drop image</div>
+      <span style="font-size:var(--text-caption);color:color-mix(in srgb,var(--fg-on-accent) 75%,transparent)">Scan to connect · 扫码加我</span>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>© 2026 Jess Financial Planning · NJ-area engineers</span>
+    <span>Design mockup — credentials marked * to be confirmed</span>
+  </footer>
+</div>
+
+</body>
+</html>

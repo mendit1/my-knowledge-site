@@ -1,0 +1,30 @@
+:root {
+  /* ---- Ink & neutrals (toned, never pure #000/#fff) ---- */
+  --fg-1: #1b1d1a;          /* primary text (near-black, warm) */
+  --fg-2: #63655f;          /* muted / secondary text */
+  --fg-on-accent: #fdfdfc;  /* text/icons on accent fills */
+
+  --surface-page: #f5f6f8;  /* default page ground (cool off-white) */
+  --surface-card: #fdfdfc;  /* card surface (toned off pure white) */
+  --border-1: rgba(20, 22, 18, .10); /* hairline borders/dividers */
+
+  /* ---- Accent palettes ----
+     Each palette: base / strong (hover, +1 step) / soft (tint bg) / page (its own ground).
+     Low chroma by design — professional, warm, not "tech". */
+  --navy: #22406a;      --navy-strong: #182f4e;      --navy-soft: #e9eef4;      --navy-page: #f5f6f8;
+  --forest: #21503f;    --forest-strong: #183b2e;    --forest-soft: #e9efeb;    --forest-page: #f5f5f3;
+  --teal: #1f4d55;      --teal-strong: #163940;      --teal-soft: #e6eff0;      --teal-page: #f4f6f6;
+  --graphite: #343a41;  --graphite-strong: #23272c;  --graphite-soft: #ececed;  --graphite-page: #f5f5f4;
+  --bordeaux: #6a2434;  --bordeaux-strong: #4e1a26;  --bordeaux-soft: #f2e8ea;  --bordeaux-page: #f8f5f4;
+
+  /* ---- Semantic accent (defaults to Navy — the chosen direction) ---- */
+  --accent: var(--navy);
+  --accent-strong: var(--navy-strong);
+  --accent-soft: var(--navy-soft);
+}
+
+/* Swap the whole theme by setting one attribute on a container, e.g. <div data-accent="forest"> */
+[data-accent="forest"]   { --accent: var(--forest);   --accent-strong: var(--forest-strong);   --accent-soft: var(--forest-soft);   --surface-page: var(--forest-page); }
+[data-accent="teal"]     { --accent: var(--teal);     --accent-strong: var(--teal-strong);     --accent-soft: var(--teal-soft);     --surface-page: var(--teal-page); }
+[data-accent="graphite"] { --accent: var(--graphite); --accent-strong: var(--graphite-strong); --accent-soft: var(--graphite-soft); --surface-page: var(--graphite-page); }
+[data-accent="bordeaux"] { --accent: var(--bordeaux); --accent-strong: var(--bordeaux-strong); --accent-soft: var(--bordeaux-soft); --surface-page: var(--bordeaux-page); }

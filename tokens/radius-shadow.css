@@ -1,0 +1,13 @@
+:root {
+  /* ---- Corner radii ---- */
+  --radius-sm: 7px;    /* small marks, chips */
+  --radius-md: 8px;    /* buttons, inputs */
+  --radius-lg: 12px;   /* cards */
+  --radius-xl: 14px;   /* media frames, large surfaces */
+  --radius-pill: 999px;/* tags, avatars */
+
+  /* ---- Elevation — soft, ambient; never stacked/heavy ---- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, .06);
+  --shadow-md: 0 6px 30px rgba(0, 0, 0, .10);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, .14); /* featured card lift */
+}

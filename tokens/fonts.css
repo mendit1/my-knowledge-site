@@ -1,0 +1,4 @@
+/* Webfonts — CDN (Google Fonts). Source Serif 4 (display) + Inter (body/UI).
+   These @import'd sheets carry the @font-face rules the compiler ships.
+   NOTE: fonts are loaded from Google's CDN, not vendored binaries. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&display=swap');

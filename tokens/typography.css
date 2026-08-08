@@ -1,0 +1,32 @@
+:root {
+  /* ---- Font families ---- */
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif; /* warm serif — headlines, prices, stats */
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;          /* UI + body copy */
+
+  /* ---- Type scale (px, matched to the landing) ---- */
+  --text-caption: 12px;  /* kickers, eyebrows, captions, footer */
+  --text-sm: 14px;       /* dense supporting copy, nav, buttons, list items */
+  --text-body: 15px;     /* standard paragraph */
+  --text-lead: 16px;     /* hero lead paragraph */
+  --text-h4: 18px;       /* card / feature titles */
+  --text-stat: 26px;     /* stat numbers */
+  --text-h3: 26px;
+  --text-h2: 30px;       /* section headings */
+  --text-price: 40px;    /* price figures */
+  --text-h1: 46px;       /* hero headline */
+  --text-display: 50px;  /* centered hero variant */
+
+  /* ---- Weights (never heavier than 600 — hierarchy is size + space) ---- */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+
+  /* ---- Line heights ---- */
+  --lh-tight: 1.1;    /* display headlines */
+  --lh-heading: 1.2;  /* section headings */
+  --lh-body: 1.7;     /* paragraphs */
+
+  /* ---- Tracking ---- */
+  --tracking-eyebrow: .10em; /* uppercase kickers/eyebrows */
+  --tracking-tight: -.01em;  /* large headlines */
+}

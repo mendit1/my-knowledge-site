@@ -34,6 +34,7 @@ Jess Advisory — 面向美东（NJ 为主）华人科技工程师的独立理�
 
 - `index.html` → 重定向至 `理财顾问落地页.html`（首页）
 - `resources.html` — 资源文章页（筛选芯片 + 8 篇文章卡片，按主题过滤）
+- `poster.html` — 公开课宣传海报（1080×1920 固定尺寸，深色主题，Phosphor Icons）
 
 ## 首页必须包含的板块
 

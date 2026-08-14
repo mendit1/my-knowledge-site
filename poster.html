@@ -7,48 +7,39 @@
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
 <style>
-  :root {
-    --poster-bg-outer: #0a1018;
-    --poster-bg: #0f1923;
-    --poster-fg: #e4e6ea;
-    --poster-accent-deep: #152a45;
-    --poster-neutral-dark: #111c2a;
-    --poster-border: #253344;
-    --poster-accent-light: #6b9fd4;
-  }
-  body{margin:0;background:var(--poster-bg-outer);display:grid;place-items:center;font-family:var(--font-body)}
-  .poster{position:relative;width:1080px;height:1920px;overflow:hidden;color:var(--poster-fg);
+  body{margin:0;background:var(--fg-1);display:grid;place-items:center;font-family:var(--font-body)}
+  .poster{position:relative;width:1080px;height:1920px;overflow:hidden;color:var(--fg-1);
     background:
-      radial-gradient(1000px 900px at 88% -6%, color-mix(in srgb, var(--poster-accent-deep) 78%, transparent), transparent 58%),
-      radial-gradient(900px 900px at -12% 104%, color-mix(in srgb, var(--poster-accent-deep) 42%, transparent), transparent 55%),
-      var(--poster-bg);
+      radial-gradient(1000px 900px at 88% -6%, var(--accent-soft), transparent 58%),
+      radial-gradient(900px 900px at -12% 104%, color-mix(in srgb, var(--accent-soft) 70%, transparent), transparent 55%),
+      var(--surface-page);
     display:flex;flex-direction:column;padding:76px 88px 72px}
-  .poster::before{content:"";position:absolute;top:0;left:88px;right:88px;height:1px;background:linear-gradient(to right,transparent,var(--accent) 20%,var(--accent) 80%,transparent);opacity:.6}
+  .poster::before{content:"";position:absolute;top:0;left:88px;right:88px;height:2px;background:linear-gradient(to right,transparent,var(--accent) 20%,var(--accent) 80%,transparent);opacity:.85}
   .brandrow{display:flex;align-items:center;justify-content:space-between}
-  .brand{display:flex;align-items:center;gap:var(--space-4);font-size:26px;font-weight:var(--fw-semibold)}
-  .mark{width:52px;height:52px;border-radius:var(--radius-md);border:1px solid var(--accent);color:var(--accent);display:grid;place-items:center;font-family:var(--font-display);font-size:28px}
-  .free{font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-pill);padding:10px 22px}
-  .kicker{margin-top:72px;font-size:26px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);display:flex;align-items:center;gap:20px}
+  .brand{display:flex;align-items:center;gap:16px;font-size:26px;font-weight:var(--fw-semibold)}
+  .mark{width:52px;height:52px;border-radius:var(--radius-md);background:var(--accent);color:var(--fg-on-accent);display:grid;place-items:center;font-family:var(--font-display);font-size:28px;font-weight:var(--fw-semibold)}
+  .free{font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-pill);padding:10px 22px;font-weight:var(--fw-semibold)}
+  .kicker{margin-top:72px;font-size:26px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:var(--fw-semibold);display:flex;align-items:center;gap:20px}
   .kicker::before{content:"";width:64px;height:2px;background:var(--accent)}
-  h1{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:90px;line-height:1.04;letter-spacing:-.02em;margin:30px 0 0}
+  h1{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:90px;line-height:1.04;letter-spacing:var(--tracking-tight);margin:30px 0 0}
   h1 .zh{display:block}
-  h1 em{font-style:normal;color:var(--poster-accent-light)}
-  .en{margin:28px 0 0;font-size:30px;line-height:1.5;color:color-mix(in srgb,var(--poster-fg) 62%,transparent);max-width:24ch}
+  h1 em{font-style:normal;color:var(--accent)}
+  .en{margin:28px 0 0;font-size:30px;line-height:1.5;color:var(--fg-2);max-width:24ch}
   .points{margin-top:52px;display:flex;flex-direction:column;gap:18px}
-  .pt{display:flex;align-items:center;gap:28px;background:color-mix(in srgb,var(--poster-neutral-dark) 55%,transparent);border:1px solid var(--poster-border);border-radius:var(--radius-lg);padding:30px 34px}
+  .pt{display:flex;align-items:center;gap:28px;background:var(--surface-card);border:1px solid var(--border-1);border-radius:var(--radius-lg);padding:30px 34px;box-shadow:var(--shadow-sm)}
   .pt i{font-size:44px;color:var(--accent);flex:none;line-height:1}
-  .pt .t{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:40px;line-height:var(--lh-tight)}
-  .pt .s{font-size:25px;color:color-mix(in srgb,var(--poster-fg) 60%,transparent);margin-top:6px}
+  .pt .t{font-family:var(--font-display);font-weight:var(--fw-semibold);font-size:40px;line-height:1.1}
+  .pt .s{font-size:25px;color:var(--fg-2);margin-top:6px}
   .meta{margin-top:auto;display:flex;gap:56px;align-items:flex-end;justify-content:space-between}
   .facts{display:flex;flex-direction:column;gap:30px;padding-top:56px}
-  .fact{display:flex;align-items:center;gap:var(--space-6);font-size:34px}
+  .fact{display:flex;align-items:center;gap:24px;font-size:34px}
   .fact i{font-size:40px;color:var(--accent);flex:none}
   .fact b{font-weight:var(--fw-semibold);font-family:var(--font-display)}
-  .fact span{color:color-mix(in srgb,var(--poster-fg) 64%,transparent);font-size:27px;display:block;margin-top:2px}
+  .fact span{color:var(--fg-2);font-size:27px;display:block;margin-top:2px}
   .qrwrap{display:flex;flex-direction:column;align-items:center;gap:18px;flex:none}
-  .qr{width:290px;height:290px;border:1px solid var(--poster-border);border-radius:var(--radius-lg);display:grid;place-items:center;text-align:center;font:20px/1.5 ui-monospace,monospace;color:color-mix(in srgb,var(--poster-fg) 55%,transparent);background:repeating-linear-gradient(135deg,color-mix(in srgb,var(--poster-fg) 7%,transparent) 0 14px,transparent 14px 28px)}
-  .qrcap{font-size:24px;color:var(--accent);letter-spacing:.04em}
-  .foot{margin-top:44px;padding-top:30px;border-top:1px solid var(--poster-border);display:flex;align-items:center;justify-content:space-between;font-size:24px;color:color-mix(in srgb,var(--poster-fg) 55%,transparent)}
+  .qr{width:290px;height:290px;border:1px solid var(--border-1);border-radius:var(--radius-lg);display:grid;place-items:center;text-align:center;font:20px/1.5 ui-monospace,monospace;color:var(--fg-2);background:var(--surface-card)}
+  .qrcap{font-size:24px;color:var(--accent);letter-spacing:.04em;font-weight:var(--fw-medium)}
+  .foot{margin-top:44px;padding-top:30px;border-top:1px solid var(--border-1);display:flex;align-items:center;justify-content:space-between;font-size:24px;color:var(--fg-2)}
 </style>
 </head>
 <body>
